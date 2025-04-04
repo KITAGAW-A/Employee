@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>社員詳細</title>
+</head>
+<body>
+  <h1>社員詳細</h1>
+  <div>
+    <p>ID: <span th:text="${employee.id}"></span></p>
+    <p>名前: <span th:text="${employee.name}"></span></p>
+    <p>性別: <span th:text="${employee.gender}"></span></p>
+    <p>趣味: <span th:text="${employee.hobby}"></span></p>
+    <p>部署: <span th:text="${employee.department}"></span></p>
+    <p>役職: <span th:text="${employee.position}"></span></p>
+    <p>顔写真: <img th:src="${employee.photoUrl}" alt="顔写真" /></p>
+  </div>
+  <a th:href="@{/employees}">一覧に戻る</a>
+</body>
+</html>

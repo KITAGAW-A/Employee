@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>社員登録 / 編集</title>
+</head>
+<body>
+  <h1 th:text="${employee.id} != null ? '社員編集' : '新規社員登録'"></h1>
+  <form th:action="${employee.id} != null ? @{'/employees/' + ${employee.id}} : @{/employees}" method="post">
+    <div>
+      <label for="name">名前：</label>
+      <input type="text" id="name" name="name" th:value="${employee.name}" required />
+    </div>
+    <div>
+      <label for="gender">性別：</label>
+      <input type="text" id="gender" name="gender" th:value="${employee.gender}" />
+    </div>
+    <div>
+      <label for="hobby">趣味：</label>
+      <input type="text" id="hobby" name="hobby" th:value="${employee.hobby}" />
+    </div>
+    <div>
+      <label for="department">部署：</label>
+      <input type="text" id="department" name="department" th:value="${employee.department}" />
+    </div>
+    <div>
+      <label for="position">役職：</label>
+      <input type="text" id="position" name="position" th:value="${employee.position}" />
+    </div>
+    <div>
+      <label for="photoUrl">顔写真のURL：</label>
+      <input type="text" id="photoUrl" name="photoUrl" th:value="${employee.photoUrl}" />
+    </div>
+    <div>
+      <button type="submit">保存</button>
+    </div>
+  </form>
+  <a th:href="@{/employees}">一覧に戻る</a>
+</body>
+</html>
