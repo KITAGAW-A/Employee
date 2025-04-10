@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+
+
+/* 社員詳細ページCSS */
+
+/* ページ背景 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* ヘッダー：写真＋名前＋雇用形態 */
+.employee-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.employee-photoUrl {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin-right: 20px;
+}
+.employee-header div {
+  text-align: left;
+}
+.employee-header h2 {
+  font-size: 24px;
+  margin: 0;
+}
+.employee-header p {
+  font-size: 18px;
+  color: #555;
+}
+
+/* 基本情報・業務情報 */
+.employee-details,
+.employee-job-info {
+  margin-bottom: 20px;
+}
+.employee-details p,
+.employee-job-info p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+/* 編集／削除／一覧戻る ボタン */
+.employee-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+.employee-actions .button {
+	display: inline-block;
+	padding: 10px 20px;
+	margin: 10px;
+	background-color: #4CAF50;
+	color: white;
+	text-decoration: none;
+	border-radius: 5px;
+}
+.employee-actions .button:hover {
+  background-color: #45a049;
+}
+
+.employee-actions form button {
+  background-color: #f44336;
+  border: none;
+  cursor: pointer;
+}
+.employee-actions form button:hover {
+  background-color: #e53935;
+}
+

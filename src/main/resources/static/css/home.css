@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+/*ホーム画面のcss*/
+
+/*画面の調整*/
+body.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  
+/*背景*/
+  background-image: url('/images/ホーム画面.jpg');  
+  background-size: cover;  /* 背景画像を画面いっぱいに広げる */
+  background-position: center;  
+  background-repeat: no-repeat;  
+}
+
+body.home-page h1 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 50px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  
+}
+
+body.home-page button {
+  padding: 15px 30px;
+  background-color: #007bff;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 200px;
+}

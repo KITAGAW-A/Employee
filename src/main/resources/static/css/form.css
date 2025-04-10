@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+新規社員登録/編集ページのcss
+
+body {
+    font-size: 18px;
+    background-color: #fdf6e3; 
+    text-align: center;
+}
+
+form {
+    display: inline-block;
+    margin: auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+form div {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: inline-block;
+    width: 180px;
+    font-weight: bold;
+}
+
+input, select {
+    font-size: 16px;
+    padding: 5px 10px;
+    width: 250px;
+}
+
+button {
+    font-size: 18px;
+    padding: 12px 24px;
+    background-color: #e0c097;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d4aa7d;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button-group a {
+    font-size: 18px;
+    padding: 12px 24px;
+    background-color: #e0c097;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+}
+
+.button-group a:hover {
+    background-color: #d4aa7d;
+}

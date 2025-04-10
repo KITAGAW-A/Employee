@@ -3,12 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>組織図</title>
+  
+  <link rel="stylesheet" th:href="@{/css/common.css}" />
+  <link rel="stylesheet" th:href="@{/css/project.css}" />
+
+  
 </head>
-<body>
-  <h1>組織図</h1>
-  <div>
-    <p>ここに組織図の画像や、部署ごとの構成を記載します。</p>
-  </div>
-  <a href="/">ホームに戻る</a>
+
+    <body class="project-page">
+	<div class="project-banner">
+	<div class="banner-title">ORG CHART</div>
+	</div>
+	
+
+	<div class="project-container">
+	  <img th:src="@{/images/組織図.png}" alt="組織図" class="project-image" />
+	  <div class="project-title">組織図</div>
+	</div>
+  
+	
+  <!--左側のリンク-->
+  	<nav class="side-nav">
+  		<a th:href="@{/company}">会社概要</a>
+  		<a th:href="@{/employees}">社員一覧</a>
+  		<a th:href="@{/}">ホーム</a>
+  	</nav>
+  
 </body>
 </html>

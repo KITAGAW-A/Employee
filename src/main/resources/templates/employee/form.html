@@ -1,40 +1,87 @@
 <!DOCTYPE html>
+
+<!--社員登録ページ-->
+
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>社員登録 / 編集</title>
+  <link rel="stylesheet" th:href="@{/css/common.css}" />
+
 </head>
+
 <body>
   <h1 th:text="${employee.id} != null ? '社員編集' : '新規社員登録'"></h1>
-  <form th:action="${employee.id} != null ? @{'/employees/' + ${employee.id}} : @{/employees}" method="post">
-    <div>
+  <form th:action="${employee.id != null} ? @{'/employees/' + ${employee.id}} : @{/employees}" method="post">
+
+	<div>
       <label for="name">名前：</label>
       <input type="text" id="name" name="name" th:value="${employee.name}" required />
     </div>
-    <div>
+    
+	<div>
       <label for="gender">性別：</label>
-      <input type="text" id="gender" name="gender" th:value="${employee.gender}" />
+	  <select id = "gender" name="gender" required>
+		<option value="" disabled th:selected="${employee.gender == null}">選択してください</option>
+		<option value="男性" th:selected="${employee.gender} == '男性'">男性</option>
+		<option value="女性" th:selected="${employee.gender} == '女性'">女性</option>
+	  </select>
     </div>
+	
+	<div>
+		<label for="birthDate">生年月日:</label>
+		<input type="text" id="birthDate" name="birthDate" th:value="${employee.birthDate}" placeholder="yyyy/MM/dd" required />
+	</div>
+	
     <div>
       <label for="hobby">趣味：</label>
-      <input type="text" id="hobby" name="hobby" th:value="${employee.hobby}" />
+      <input type="text" id="hobby" name="hobby" th:value="${employee.hobby}" required/>
     </div>
+	
     <div>
       <label for="department">部署：</label>
-      <input type="text" id="department" name="department" th:value="${employee.department}" />
+	  <select id = "department" name="department" required>
+		<option value="" disabled th:selected="${employee.gender == null}">選択してください</option>
+		<option th:each="dep : ${'役員,経営管理部,人事総務室,コンプライアンス・リスク管理部,IT/情報セキュリティ管理部,売買審査部,事務部,システム開発部,システム技術部,金融市場部,投資情報室,営業推進部,カスタマーサクセス部,事業開発部,商品開発室'.split(',')}" 
+        th:value="${dep}" th:text="${dep}" ></option>
+	  </select>
     </div>
+	
+	  
     <div>
       <label for="position">役職：</label>
-      <input type="text" id="position" name="position" th:value="${employee.position}" />
-    </div>
+	  <select id = "position" name="position" required>
+		<option value="" disabled th:selected="${employee.gender == null}">選択してください</option>
+		<option th:each="pos : ${'一般社員,主任,係長,課長,次長,部長,常務取締役,専務取締役,取締役副社長,代表取締役社長,会長'.split(',')}" 
+        th:value="${pos}" th:text="${pos}" ></option>
+	  </select>
+     </div>
+	 
+	 <div>
+		<label for="employmentType">雇用形態:</label>
+		<select id="employmentType" name="employmentType" required>
+		  <option value="" disabled th:selected="${employee.gender == null}">選択してください</option>
+		  <option value="正社員" th:selected="${employee.employmentType == '正社員'}">正社員</option>
+		  <option value="契約社員" th:selected="${employee.employmentType == '契約社員'}">契約社員</option>
+		  <option value="派遣社員" th:selected="${employee.employmentType == '派遣社員'}">派遣社員</option>
+		  <option value="業務委託" th:selected="${employee.employmentType == '業務委託'}">業務委託</option>
+		  <option value="アルバイト" th:selected="${employee.employmentType == 'アルバイト'}">アルバイト</option>
+		  <option value="インターン" th:selected="${employee.employmentType == 'インターン'}">インターン</option>
+		  <option value="委任" th:selected="${employee.employmentType == '委任'}">委任</option>
+	  </select>	
+	 </div>
+	 
     <div>
-      <label for="photoUrl">顔写真のURL：</label>
-      <input type="text" id="photoUrl" name="photoUrl" th:value="${employee.photoUrl}" />
+      <label for="photoUrl">顔写真ファイル名(例：東京太郎.jpg)：</label>
+      <input type="text" id="photoUrl" name="photoUrl" th:value="${employee.photoUrl}" required/>
     </div>
-    <div>
-      <button type="submit">保存</button>
-    </div>
-  </form>
-  <a th:href="@{/employees}">一覧に戻る</a>
+   
+	<div class="button-group">
+	  <button type="submit">保存</button>
+	  <a th:if="${employee.id != null}" th:href="@{'/employees/' + ${employee.id}}">社員詳細に戻る</a>
+	  <a th:href="@{/employees}">一覧に戻る</a>
+	</div>
+  
+</form>
 </body>
 </html>

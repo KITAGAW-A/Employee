@@ -1,33 +1,82 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+
+<!--社員一覧ページ-->
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <title>社員一覧</title>
+  <link rel="stylesheet" th:href="@{/css/employee-list.css}">
+  <link rel="stylesheet" th:href="@{/css/employee-list.css}" />
 </head>
 <body>
-  <h1>社員一覧</h1>
-  <a th:href="@{/employees/new}">新規登録</a>
-  <table border="1">
-    <tr>
-      <th>ID</th>
-      <th>名前</th>
-      <th>部署</th>
-      <th>役職</th>
-      <th>操作</th>
-    </tr>
-    <tr th:each="employee : ${employees}">
-      <td th:text="${employee.id}"></td>
-      <td th:text="${employee.name}"></td>
-      <td th:text="${employee.department}"></td>
-      <td th:text="${employee.position}"></td>
-      <td>
-        <a th:href="@{'/employees/' + ${employee.id}}">詳細</a> |
-        <a th:href="@{'/employees/' + ${employee.id} + '/edit'}">編集</a> |
-        <form th:action="@{'/employees/' + ${employee.id} + '/delete'}" method="post" style="display:inline;">
-          <button type="submit">削除</button>
-        </form>
-      </td>
-    </tr>
-  </table>
+	<h1 class="page-title">社員一覧</h1>
+	
+	
+	<a th:href="@{/employees/new}" class="new-btn">新規登録</a>
+	<a href="/">ホームに戻る</a>
+
+	<div class="employee-grid">
+	  <div class="employee-card" th:each="employee : ${employees}">
+	    <a th:href="@{'/employees/' + ${employee.id}}">
+			
+<!--		<img th:src="@{'/images/' + ${employee.photoUrl}}" alt="写真" />-->
+<!--		<img th:src="${employee.photoUrl}" alt="写真" />-->
+<!--		<img th:src="@{/images/{photoUrl}(photoUrl=${employee.photoUrl})}" alt="写真" />-->
+<!--	<img th:src="@{'/images/' + ${employee.photoUrl}}" alt="写真" />-->
+<img th:src="@{${employee.photoUrl}}" alt="写真" width="100">
+
+
+			<p th:text="${employee.name}"></p>
+	      <p th:text="${employee.department} "></p>
+	    </a>
+	  </div>
+	</div>
+	
+
 </body>
 </html>
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+  
+<!--  <link rel="stylesheet" th:href="@{/css/common.css}" />-->
+<!--  <link rel="stylesheet" th:href="@{/css/employee-list.css}" />-->
+  
+<!--  <title>社員一覧</title>-->
+<!--</head>-->
+<!--<body class="employee-list">-->
+
+<!--  <h1>社員一覧</h1>-->
+<!--  <a th:href="@{/employees/new}">新規登録</a>-->
+<!--  <table border="1">-->
+<!--    <tr>-->
+<!--      <th>ID</th>-->
+<!--      <th>名前</th>-->
+<!--	  <th>性別</th>-->
+<!--	  <th>顔写真</th>-->
+<!--      <th>部署</th>-->
+<!--      <th>役職</th>-->
+<!--      <th>操作</th>-->
+<!--    </tr>-->
+<!--    <tr th:each="employee : ${employees}">-->
+<!--      <td th:text="${employee.id}"></td>-->
+<!--      <td th:text="${employee.name}"></td>-->
+<!--	  <td th:text="${employee.gender}"></td>-->
+<!--	  <td><img th:src="@{${employee.photoUrl}}" alt="顔写真" width="50"/></td>-->
+<!--      <td th:text="${employee.department}"></td>-->
+<!--      <td th:text="${employee.position}"></td>-->
+<!--      <td>-->
+<!--        <a th:href="@{'/employees/' + ${employee.id}}">詳細</a> |-->
+<!--        <a th:href="@{'/employees/' + ${employee.id} + '/edit'}">編集</a> |-->
+<!--        <form th:action="@{'/employees/' + ${employee.id} + '/delete'}" method="post" style="display:inline;">-->
+<!--          <button type="submit">削除</button>-->
+<!--        </form>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--  </table>-->
+<!--</body>-->
+<!--</html>-->

@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+
+/*組織図のcss*/
+
+
+/*背景画像だけの上部バナー*/
+.project-banner {
+  background-image: url('/images/会社概要.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 35vh; /* 上部3割 */ 
+}
+
+/* バナー上のタイトル */
+.banner-title {
+  color: white;
+  font-size: 70px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50vh; /* バナー高さと合わせる */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* 左側リンク */
+.side-nav {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  position: fixed;
+  top:50;
+  left: 50;
+  transform: translate(80%,-330%);
+  z-index:1001;
+}
+ 
+.side-nav a {
+ display: block;
+ padding: 12px;
+ background-color: #f5f1e4; /* ベージュ背景 */
+ color: #000;               /* 黒文字 */
+ text-align: center;
+ text-decoration: none;
+ border: 1px solid rgb(255, 255, 255);
+ font-size: 16px; 
+}
+
+.side-nav a:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.project-overview h1 {
+  color: rgb(0, 0, 0); /* タイトルの色 */
+  font-size: 25px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+
+/* 組織図メイン*/
+.project-container {
+	position: relative;
+	display: block;
+	width: fit-content;    /* 画像幅に合わせる */
+	margin: 40px auto;     /* 中央寄せ */
+	overflow: visible;     /* はみ出しを隠さない */
+}
+
+/* 画像そのもの */
+.project-image {
+	display: block;             
+	max-width: none !important;/* 100%制限を解除 */
+	width: 90% !important;   
+	height: auto !important;   /* 縦横比維持 */
+	border-radius: 0 !important; /* 角丸リセット */
+}
+
+/* 画像左上に重ねるタイトル */
+.project-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.8);  /* 半透明背景 */
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+
+

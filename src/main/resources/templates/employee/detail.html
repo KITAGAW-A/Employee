@@ -1,20 +1,47 @@
 <!DOCTYPE html>
+
+<!--社員詳細ページ-->
+
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>社員詳細</title>
+  <link rel="stylesheet" th:href="@{/css/common.css}" />
+  <link rel="stylesheet" th:href="@{/css/employee-detail.css}" />
 </head>
 <body>
   <h1>社員詳細</h1>
-  <div>
-    <p>ID: <span th:text="${employee.id}"></span></p>
-    <p>名前: <span th:text="${employee.name}"></span></p>
-    <p>性別: <span th:text="${employee.gender}"></span></p>
-    <p>趣味: <span th:text="${employee.hobby}"></span></p>
-    <p>部署: <span th:text="${employee.department}"></span></p>
-    <p>役職: <span th:text="${employee.position}"></span></p>
-    <p>顔写真: <img th:src="${employee.photoUrl}" alt="顔写真" /></p>
+  
+  <div class="employee-header">
+	<img th:src="@{'/images/' + ${employee.photoUrl}}" alt="顔写真" class="employee-photoUrl"/>
+	<div>
+		<h2 th:text="${employee.name}"></h2>
+		<p th:text="'雇用形態：'+ ${employee.employmentType}"></p>
+	</div>
   </div>
-  <a th:href="@{/employees}">一覧に戻る</a>
+  
+<!--  基本情報の表示-->
+  <div class="employee-details">
+	<p>性別: <span th:text="${employee.gender}"></span></p>
+	<p>生年月日: <span th:text="${#dates.format(employee.birthDate, 'yyyy/MM/dd')}"></span></p>
+	<p>趣味: <span th:text="${employee.hobby}"></span></p>
+  </div>
+  
+<!--  業務情報の表示-->
+  <div class="employee-job-info">
+	<p>部署: <span th:text="${employee.department}"></span></p>
+    <p>役職: <span th:text="${employee.position}"></span></p>
+  </div>
+  
+<!--  編集と削除ボタン-->
+  <div class="employee-actions">
+  <a th:href="@{'/employees/' + ${employee.id} + '/edit'}"class="button">編集</a> 
+  <form th:action="@{'/employees/' + ${employee.id} + '/delete'}" method="post" style="display:inline;">
+  <button type="submit" class="button">削除</button>
+  </form>
+  
+  <a th:href="@{/employees}"class="button">一覧に戻る</a>
+  </div>
+  
 </body>
 </html>

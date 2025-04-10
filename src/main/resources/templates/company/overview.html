@@ -3,13 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>会社概要</title>
+  
+  <link rel="stylesheet" th:href="@{/css/common.css}" />
+  <link rel="stylesheet" th:href="@{/css/overview.css}" />
+  
 </head>
-<body>
-  <h1>会社概要</h1>
-  <div>
-    <p>商号：株式会社日立建機ティエラ 設立年：1949年3月2日 事業内容：建設機械の開発・製造・販売 ビジョン：地球環境のために。</p>
+<body class="company-page">
+	
+  <div class="company-banner">
+	<div class="banner-title">COMPANY OUTLINE</div>
   </div>
-  <a href="/">ホームに戻る</a>
+  
+  
+  <div class="company-container">
+	
+	<!--左側のリンク-->
+	<nav class="side-nav">
+		<a th:href="@{/organization}">組織図</a>
+		<a th:href="@{/employees}">社員一覧</a>
+		<a th:href="@{/}">ホーム</a>
+	</nav>
+	
+	<!--メイン-->
+	<div class="company-overview">
+    <h2>会社概要</h2>
+    <table class="info-table">
+	 <tr><th>商号</th><td>株式会社〇紅商事</td></tr>
+	 <tr><th>設立年</th><td>19XX年XX月XX日</td></tr>
+	 <tr><th>資本金</th><td>50,000円</td></tr>
+     <tr><th>本社所在地</th><td>東京都千代田区千代田1-1 </td></tr>
+	 <tr><th>TEL</th><td>03-1234-5678</td></tr>
+	 <tr><th>代表者</th><td>代表取締役　北川 貴也</td></tr>
+	 <tr><th>従業員数</th><td>400名</td></tr>
+	 <tr><th>事業内容</th><td>建設機械の開発・製造・販売</td></tr>
+	 </table>
+	</div>
+  </div>
+  
 </body>
 </html>
-

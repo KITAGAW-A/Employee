@@ -1,5 +1,7 @@
 package com.example.emplyeesreview.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +26,16 @@ public class EmployeeController {
 	//社員一覧表示
 	@GetMapping
 	public String listEmployees(Model model) {
-		model.addAttribute("employees",employeeService.getAllEmployees());
+		
+		List<Employee> employees = employeeService.getAllEmployees();
+		for(Employee e : employees) {
+			System.out.println("名前："+e.getName()+"/写真："+e.getPhotoUrl());
+		}
+		model.addAttribute("employees", employees);
 		return "employee/list";
+
+//		model.addAttribute("employees",employeeService.getAllEmployees());
+//		return "employee/list";
 	}
 	
 	//社員詳細表示
@@ -47,7 +57,7 @@ public class EmployeeController {
 	@PostMapping
 	public String createEmployee(@ModelAttribute Employee employee) {
 		employeeService.createEmployee(employee);
-		return "redirect:/Employees";
+		return "redirect:/employees";
 	}
 	
 	//編集フォームの表示
@@ -63,54 +73,18 @@ public class EmployeeController {
 	public String updateEmployee(@PathVariable Long id, @ModelAttribute Employee employee) {
 		employee.setId(id);
 		employeeService.updateEmployee(employee);
-		return "redirect:/employee";
+		return "redirect:/employees";
 	}
 	
 	//削除処理
 	@PostMapping("/{id}/delete")
 	public String deleteEmployee(@PathVariable Long id) {
 		employeeService.deleteEmployee(id);
-		return "redirect:/employee";
+		return "redirect:/employees";
 	}
 
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
